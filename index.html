@@ -203,7 +203,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%233498db' fill-opacity='0.03' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,224C960,224,1056,256,1152,245.3C1248,235,134极,181,1392,154.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%233498db' fill-opacity='0.03' d='M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,261.3C672,256,768,224,864,224C960,224,1056,256,1152,245.3C1248,235,134极,181,1392,154.7L1440,128L1440,320L1392,320C134极,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
             background-size: cover;
             background-position: center;
             z-index: -1;
@@ -289,7 +289,7 @@
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 20px;
-            animation: fade极 2s ease;
+            animation: fadeIn 2s ease;
         }
 
         .hero-title {
@@ -341,7 +341,7 @@
             background-color: var(--accent-color);
         }
 
-极 .btn-cv:hover {
+        .btn-cv:hover {
             background-color: #c0392b;
         }
 
@@ -576,7 +576,7 @@
             background-color: var(--card-color);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 极 10px 20px rgba(0, 0, 0, 0.1);
             transition: var(--transition);
         }
 
@@ -616,59 +616,120 @@
             display: block;
         }
 
-        /* Experience & Certification Section */
+        /* Experience & Certification Section - SLIDER VERSION */
         .experience-certification {
             background-color: var(--background-color);
+            position: relative;
+            overflow: hidden;
         }
 
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(300px, 1fr));
-            gap: 30px;
+        .slider-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .experience-item {
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100%;
             background-color: var(--card-color);
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
         }
 
-        .experience-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .experience-img {
-            height: 200px;
+        .slide-img {
+            height: 250px;
             overflow: hidden;
         }
 
-        .experience-img img {
+        .slide-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
 
-        .experience-item:hover .experience-img img {
-            transform: scale(1.1);
+        .slide:hover .slide-img img {
+            transform: scale(1.05);
         }
 
-        .experience-info {
-            padding: 20px;
+        .slide-info {
+            padding: 25px;
+            flex-grow: 1;
         }
 
-        .experience-info h3 {
+        .slide-info h3 {
             color: var(--primary-color);
             margin-bottom: 10px;
+            font-size: 1.4rem;
         }
 
-        .experience-info .date {
+        .slide-info .date {
             color: var(--secondary-color);
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: block;
+        }
+
+        .slide-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .slider-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .slider-btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background-color: var(--secondary-color);
+            transform: scale(1.2);
         }
 
         /* Contact Section */
@@ -768,100 +829,6 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
-
-        /* Gaya untuk bagian Pengalaman & Sertifikasi */
-.experience-certification {
-    background-color: var(--background-color);
-    /* Ganti grid layout dengan slider */
-    padding: 80px 0;
-}
-
-/* Container utama untuk slider */
-.slider-container {
-    position: relative;
-    width: 100%;
-    /* Pastikan slide yang tidak terlihat disembunyikan */
-    overflow: hidden; 
-}
-
-/* Wrapper untuk semua slide */
-.slider {
-    display: flex;
-    /* Tambahkan transisi agar pergeseran terlihat mulus */
-    transition: transform 0.5s ease-in-out; 
-}
-
-/* Gaya untuk setiap slide individual */
-.slide {
-    /* Setiap slide mengambil 100% lebar dari .slider-container */
-    flex: 0 0 100%; 
-    min-width: 100%;
-    box-sizing: border-box;
-    display: flex; /* Mengatur tata letak konten di dalam slide */
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    background-color: var(--card-color);
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.slide-img img {
-    width: 200px; /* Ukuran gambar logo atau sertifikasi */
-    height: 120px;
-    object-fit: contain;
-    margin-bottom: 10px;
-}
-
-.slide-info .date {
-    color: var(--secondary-color);
-    font-weight: 600;
-    font-size: 0.9em;
-}
-
-.slide-info h3 {
-    color: var(--primary-color);
-    margin-top: 5px;
-    font-size: 1.5rem;
-}
-
-/* Gaya untuk tombol navigasi slider */
-.slider-controls {
-    text-align: center;
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-}
-
-.slider-btn {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
-    border: none;
-    padding: 10px 15px;
-    margin: 0 8px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: var(--transition);
-}
-
-.slider-btn:hover {
-    background-color: var(--primary-color);
-}
-
-/* Responsivitas untuk tampilan mobile */
-@media (max-width: 600px) {
-    .slide {
-        padding: 20px;
-    }
-    
-    .slider-btn {
-        padding: 8px 12px;
-        font-size: 1em;
-    }
-}
 
         /* Animasi Keyframes */
         @keyframes fadeIn {
@@ -1017,64 +984,11 @@
                 width: 240px;
                 height: 240px;
             }
+            
+            .slider-container {
+                max-width: 100%;
+            }
         }
-
-        /* Gaya untuk Lightbox (Popup) */
-.lightbox {
-    display: none; /* Sembunyikan secara default */
-    position: fixed;
-    z-index: 9999;
-    padding-top: 60px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-}
-
-.lightbox.active {
-    display: flex; /* Tampilkan saat aktif */
-}
-
-.lightbox-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    animation-name: zoom;
-    animation-duration: 0.6s;
-}
-
-.lightbox-close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.lightbox-close:hover,
-.lightbox-close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Animasi untuk membesarkan gambar */
-@keyframes zoom {
-    from {
-        transform: scale(0.1);
-    }
-    to {
-        transform: scale(1);
-    }
-}
     </style>
 </head>
 <body>
@@ -1267,18 +1181,17 @@
         </div>
     </section>
 
-    <!-- Experience & Certification Section -->
+    <!-- Experience & Certification Section - SLIDER VERSION -->
     <section id="experience" class="section experience-certification">
         <div class="container">
             <h2 class="section-title">Pengalaman & Sertifikasi</h2>
-    
+            
             <div class="slider-container">
                 <div class="slider" id="experience-slider">
+                    <!-- Slide 1 -->
                     <div class="slide">
                         <div class="slide-img">
-                            <a href="dasar.png" class="certificate-link">
-                                <img src="dasar.png" alt="Sertifikasi Dicoding">
-                            </a>
+                            <img src="dasar.png" alt="Sertifikasi Dicoding">
                         </div>
                         <div class="slide-info">
                             <span class="date">2024</span>
@@ -1287,29 +1200,37 @@
                             <p>Menyelesaikan kursus online dan mendapatkan sertifikasi dalam pengembangan web dasar.</p>
                         </div>
                     </div>
-    
+                    
+                    <!-- Slide 2 -->
                     <div class="slide">
                         <div class="slide-img">
-                            <a href="sertijs.png" class="certificate-link">
-                                <img src="sertijs.png" alt="Sertifikasi Dicoding">
-                            </a>
+                            <img src="sertijs.png" alt="Sertifikasi Dicoding">
                         </div>
                         <div class="slide-info">
                             <span class="date">2024</span>
-                            <h3>Sertifikasi Web Lanjutan</h3>
-                            <p>Belajar Web dengan Javascript</p>
-                            <p>Mempelajari teknik pemrograman web tingkat lanjut menggunakan JavaScript.</p>
+                            <h3>Sertifikasi Dicoding</h3>
+                            <p>Belajar Dasar Pemrograman JavaScript</p>
+                            <p>Menyelesaikan kursus online dan mendapatkan sertifikasi dalam pengembangan web dasar JavaScript.</p>
                         </div>
                     </div>
-    
-                    </div>
+                    
+                    <!-- Anda bisa menambahkan slide lain di sini jika diperlukan -->
+                </div>
             </div>
-    
+            
             <div class="slider-controls">
-                <button id="prevBtn" class="slider-btn">←</button>
-                <button id="nextBtn" class="slider-btn">→</button>
+                <button class="slider-btn" id="prev-btn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="slider-dots" id="slider-dots">
+                    <!-- Dots akan di-generate oleh JavaScript -->
+                </div>
+                
+                <button class="slider-btn" id="next-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-    
         </div>
     </section>
 
@@ -1336,7 +1257,7 @@
                         </div>
                         <div>
                             <h3>Email</h3>
-                            <p>rifkaaulia0923@example.com</p>
+                            <p>rifkaaulia0923@gmail.com</p>
                         </div>
                     </div>
                     
@@ -1392,10 +1313,6 @@
             <p class="copyright">&copy; Rifka Aulia Portofolio</p>
         </div>
     </footer>
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-    </div>
 
     <script>
         // Fungsi untuk popup CV
@@ -1432,115 +1349,68 @@
                     document.body.style.overflow = 'auto'; // Mengembalikan scroll
                 }
             });
+            
+            // Fungsi untuk slider pengalaman & sertifikasi
+            const slider = document.getElementById('experience-slider');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const dotsContainer = document.getElementById('slider-dots');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Buat dots untuk setiap slide
+            for (let i = 0; i < slideCount; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.setAttribute('data-index', i);
+                dotsContainer.appendChild(dot);
+            }
+            
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            // Fungsi untuk memperbarui tampilan slider
+            function updateSlider() {
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Perbarui status aktif dot
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Event listener untuk tombol next
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            });
+            
+            // Event listener untuk tombol previous
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateSlider();
+            });
+            
+            // Event listener untuk dots
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    currentSlide = parseInt(dot.getAttribute('data-index'));
+                    updateSlider();
+                });
+            });
+            
+            // Auto slide setiap 5 detik
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateSlider();
+            }, 5000);
         });
-
-        document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('experience-slider');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const slides = document.querySelectorAll('.slide');
-
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-
-    // Fungsi untuk menggeser slider
-    function updateSlider() {
-        // Menghitung seberapa jauh slider harus digeser.
-        // `currentIndex` dikalikan dengan -100 untuk menggeser ke kiri.
-        const offset = -currentIndex * 100;
-        slider.style.transform = `translateX(${offset}%)`;
-    }
-
-    // Event listener untuk tombol 'selanjutnya'
-    nextBtn.addEventListener('click', () => {
-        // Geser ke slide berikutnya jika belum di slide terakhir
-        if (currentIndex < totalSlides - 1) {
-            currentIndex++;
-        } else {
-            // Kembali ke slide pertama jika sudah di akhir
-            currentIndex = 0;
-        }
-        updateSlider();
-    });
-
-    // Event listener untuk tombol 'sebelumnya'
-    prevBtn.addEventListener('click', () => {
-        // Geser ke slide sebelumnya jika belum di slide pertama
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            // Kembali ke slide terakhir jika sudah di awal
-            currentIndex = totalSlides - 1;
-        }
-        updateSlider();
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Kode slider yang sudah kita buat sebelumnya...
-    const slider = document.getElementById('experience-slider');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const slides = document.querySelectorAll('.slide');
-
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-
-    function updateSlider() {
-        const offset = -currentIndex * 100;
-        slider.style.transform = `translateX(${offset}%)`;
-    }
-
-    nextBtn.addEventListener('click', () => {
-        if (currentIndex < totalSlides - 1) {
-            currentIndex++;
-        } else {
-            currentIndex = 0;
-        }
-        updateSlider();
-    });
-
-    prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-        } else {
-            currentIndex = totalSlides - 1;
-        }
-        updateSlider();
-    });
-
-    // --- Kode Lightbox (Popup) yang baru dimulai di sini ---
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const closeBtn = document.querySelector('.lightbox-close');
-
-    // Menangani klik pada link gambar
-    const certificateLinks = document.querySelectorAll('.certificate-link');
-
-    certificateLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            // Mencegah browser membuka link seperti biasa
-            event.preventDefault(); 
-            // Mengatur sumber gambar di dalam lightbox
-            lightboxImg.src = link.href; 
-            // Menampilkan lightbox
-            lightbox.classList.add('active'); 
-        });
-    });
-
-    // Menangani klik pada tombol close
-    closeBtn.addEventListener('click', () => {
-        // Menyembunyikan lightbox
-        lightbox.classList.remove('active'); 
-    });
-
-    // Menangani klik di luar gambar untuk menutup lightbox
-    lightbox.addEventListener('click', (event) => {
-        if (event.target === lightbox) {
-            lightbox.classList.remove('active');
-        }
-    });
-});
     </script>
 </body>
 </html>
